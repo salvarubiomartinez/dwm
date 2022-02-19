@@ -66,6 +66,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *exitcmd[]  = { "arcolinux-logout", NULL };
 static const char *refreshKeyboard[]  = { "pkill", "-RTMIN+2", "dwmblocks", NULL };
+static const char *jgmenucmd[]  = { "jgmenu_run", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -123,4 +124,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    { ClkWinTitle,          0,              Button3,        spawn,          {.v = jgmenucmd } },
+    { ClkRootWin,           0,              Button3,        spawn,          {.v = jgmenucmd } },
 };
