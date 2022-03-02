@@ -1,0 +1,11 @@
+https://www.reddit.com/r/dwm/comments/aqlicx/question_does_anyone_here_have_a_working_combined/
+
+It's a problem with XFillRectangle. The alpha patch changes the definition of drw->gc in drw.c. So when XFillRectangle is called in updatesystray the wrong value is passed.
+
+You can remedy this by changing the call from
+
+XFillRectangle(dpy, systray->win, drw->gc, 0, 0, w, bh);
+
+to
+
+XFillRectangle(dpy, systray->win, XCreateGC(dpy, root, 0 ,1 NULL), 0, 0, w, bh);
