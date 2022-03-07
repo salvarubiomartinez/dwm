@@ -74,6 +74,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *j4dmenucmd[] = { "j4-dmenu-desktop", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *exitcmd[]  = { "arcolinux-logout", NULL };
 static const char *refreshKeyboard[]  = { "pkill", "-RTMIN+2", "dwmblocks", NULL };
@@ -81,7 +82,8 @@ static const char *jgmenucmd[]  = { "jgmenu_run", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = j4dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_x,      spawn,          {.v = exitcmd } },
     { Mod1Mask,                     XK_space,  spawn,          {.v = refreshKeyboard } },
